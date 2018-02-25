@@ -67,24 +67,44 @@ var Header = function Header(props) {
     );
 };
 
-var Action = function Action(props) {
-    var onMakeDecision = function onMakeDecision() {
-        var random = Math.floor(Math.random() * props.options.length);
-        alert(props.options[random]);
-    };
-    return React.createElement(
-        'div',
-        { className: 'Container' },
-        React.createElement(
-            'button',
-            { className: 'btn-small btn-outline-calm',
-                disabled: options.length === 0,
-                onClick: onMakeDecision
-            },
-            'What Should I Do?'
-        )
-    );
-};
+var Action = function (_React$Component2) {
+    _inherits(Action, _React$Component2);
+
+    function Action(props) {
+        _classCallCheck(this, Action);
+
+        var _this2 = _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).call(this, props));
+
+        _this2.onMakeDecision = _this2.onMakeDecision.bind(_this2);
+        return _this2;
+    }
+
+    _createClass(Action, [{
+        key: 'onMakeDecision',
+        value: function onMakeDecision() {
+            var random = Math.floor(Math.random() * this.props.options.length);
+            alert(this.props.options[random]);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'Container' },
+                React.createElement(
+                    'button',
+                    { className: 'btn-small btn-outline-calm',
+                        disabled: options.length === 0,
+                        onClick: this.onMakeDecision
+                    },
+                    'What Should I Do?'
+                )
+            );
+        }
+    }]);
+
+    return Action;
+}(React.Component);
 
 var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 

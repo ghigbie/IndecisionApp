@@ -37,19 +37,26 @@ const Header = (props) => {
     )
 }
 
-const Action = (props) => {
-    const onMakeDecision = () => {
-        let random = Math.floor(Math.random() * props.options.length);
-        alert(props.options[random]);
+class Action extends React.Component{
+    constructor(props){
+        super(props);
+        this.onMakeDecision = this.onMakeDecision.bind(this);
     }
-    return (
-        <div className="Container">
-            <button className="btn-small btn-outline-calm"
-                disabled={options.length === 0}
-                onClick={onMakeDecision}
-            >What Should I Do?</button>
-        </div>
-    )
+    onMakeDecision(){
+        let random = Math.floor(Math.random() * this.props.options.length);
+        alert(this.props.options[random]);
+    }
+
+    render(){
+        return (
+            <div className="Container">
+                <button className="btn-small btn-outline-calm"
+                    disabled={options.length === 0}
+                    onClick={this.onMakeDecision}
+                >What Should I Do?</button>
+            </div>
+        )
+    }
 }
 
 let options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
