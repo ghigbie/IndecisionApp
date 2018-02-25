@@ -64,11 +64,15 @@ const Options = () => {
                 {options.length > 0 ? 'Here are your options:' : 'No options for you!'}
             </h4>
             <ol>
-            {options && options.map((option) => <li key={option}>{option}</li>)}
+            {options && options.map((option) => <Option key={option} option={option} />)}
             </ol>
         </div>
     );
 }
+
+const Option = (props) => {
+    return (<li>{props.option}</li>);
+};
 
 const AddOption = () => {
     const onFormSubmit = (e) => {

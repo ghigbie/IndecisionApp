@@ -110,13 +110,17 @@ var Options = function Options() {
             'ol',
             null,
             options && options.map(function (option) {
-                return React.createElement(
-                    'li',
-                    { key: option },
-                    option
-                );
+                return React.createElement(Option, { key: option, option: option });
             })
         )
+    );
+};
+
+var Option = function Option(props) {
+    return React.createElement(
+        'li',
+        null,
+        props.option
     );
 };
 
