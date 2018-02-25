@@ -11,10 +11,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
-    function IndecisionApp() {
+    function IndecisionApp(props) {
         _classCallCheck(this, IndecisionApp);
 
-        return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
+
+        _this.title = 'Indecison App';
+        _this.subtitle = 'Put your life in the hands of a computer...';
+        _this.options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+        return _this;
     }
 
     _createClass(IndecisionApp, [{
@@ -23,9 +28,10 @@ var IndecisionApp = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, null),
-                React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Header, { title: this.title,
+                    subtitle: this.subtitle }),
+                React.createElement(Action, { options: this.options }),
+                React.createElement(Options, { options: this.options }),
                 React.createElement(AddOption, null)
             );
         }
@@ -34,9 +40,7 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
-var Header = function Header() {
-    var title = 'Indecison App';
-    var subTitle = 'Put your life in the hands of a computer...';
+var Header = function Header(props) {
     var style = {
         backgroundColor: '#232323',
         textAlign: 'center',
@@ -52,21 +56,21 @@ var Header = function Header() {
             React.createElement(
                 'h1',
                 null,
-                title
+                props.title
             ),
             React.createElement(
                 'h3',
                 null,
-                subTitle && subTitle
+                props.subtitle && props.subtitle
             )
         )
     );
 };
 
-var Action = function Action() {
+var Action = function Action(props) {
     var onMakeDecision = function onMakeDecision() {
-        var random = Math.floor(Math.random() * options.length);
-        alert(options[random]);
+        var random = Math.floor(Math.random() * props.options.length);
+        alert(props.options[random]);
     };
     return React.createElement(
         'div',
@@ -84,10 +88,10 @@ var Action = function Action() {
 
 var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
-var Options = function Options() {
+var Options = function Options(props) {
     var onRemoveAllOptions = function onRemoveAllOptions() {
         console.log('remove');
-        options = [];
+        props.options = [];
     };
 
     return React.createElement(
@@ -104,13 +108,13 @@ var Options = function Options() {
         React.createElement(
             'h4',
             null,
-            options.length > 0 ? 'Here are your options:' : 'No options for you!'
+            props.options.length > 0 ? 'Here are your ' + props.options.length + ' options:' : 'No options for you!'
         ),
         React.createElement(
             'ol',
             null,
-            options && options.map(function (option) {
-                return React.createElement(Option, { key: option, option: option });
+            props.options && props.options.map(function (option) {
+                return React.createElement(Option, { key: option, optionText: option });
             })
         )
     );
@@ -120,7 +124,7 @@ var Option = function Option(props) {
     return React.createElement(
         'li',
         null,
-        props.option
+        props.optionText
     );
 };
 
