@@ -42,6 +42,41 @@ const Options = () => {
     );
 }
 
+class CounterApp extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            count: 0
+        }
+    }
+
+    Increment = () => {
+        this.setState = (prevState) => {
+            prevState.count = count + 1;
+        }
+    }
+
+    Decrement = () => {
+        this.setState = (prevState) => {
+            if(count > 0){
+                preveState.count = count -1
+            }
+        }
+    }
+
+    render(){
+        return(
+            <div className="container">
+                <h1>Count: {this.count}</h1>
+                <div>
+                    <button onClick={this.count++}>Increase</button>
+                    <button>Decrease</button>
+                </div>
+            </div>
+        );
+    }
+}
+
 
 const appRoot = document.getElementById('react-container');
-ReactDOM.render(<IndecisionApp />, appRoot);
+ReactDOM.render(<CounterApp />, appRoot);
