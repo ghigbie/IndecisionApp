@@ -46,7 +46,9 @@ const Options = () => {
             <h4>
                 {options.length > 0 ? 'Here are your options:' : 'No options for you!'}
             </h4>
-            {options && options.map((option) => <p key={option}>{option}</p>)}
+            <ol>
+            {options && options.map((option) => <li key={option}>{option}</li>)}
+            </ol>
         </div>
     );
 }

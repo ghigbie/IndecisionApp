@@ -85,13 +85,17 @@ var Options = function Options() {
             null,
             options.length > 0 ? 'Here are your options:' : 'No options for you!'
         ),
-        options && options.map(function (option) {
-            return React.createElement(
-                'p',
-                { key: option },
-                option
-            );
-        })
+        React.createElement(
+            'ol',
+            null,
+            options && options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
+        )
     );
 };
 
