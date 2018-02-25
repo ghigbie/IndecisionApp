@@ -30,8 +30,8 @@ const Header = () => {
     )
 }
 
+const options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 const Options = () => {
-    const options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
 
     return(
         <div className="Container">
@@ -44,11 +44,22 @@ const Options = () => {
 }
 
 const Form = () => {
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        const option = e.target.elements.option.value;
+        if(option){
+            options.push(option);
+            console.log(options.length);
+            document.getElementById('optionAdder').value = '';
+        }
+    }
+
     return(
         <div>
-            <form>
+            <form onSubmit={onFormSubmit}>
                 <input type="text" 
                        name="option" 
+                       id="optionAdder"
                        className="form-control"
                        placeholder="Add an option here..."/>
                 <input type="submit" 

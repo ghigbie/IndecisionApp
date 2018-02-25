@@ -62,8 +62,8 @@ var Header = function Header() {
     );
 };
 
+var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 var Options = function Options() {
-    var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
     return React.createElement(
         'div',
@@ -84,14 +84,25 @@ var Options = function Options() {
 };
 
 var Form = function Form() {
+    var onFormSubmit = function onFormSubmit(e) {
+        e.preventDefault();
+        var option = e.target.elements.option.value;
+        if (option) {
+            options.push(option);
+            console.log(options.length);
+            document.getElementById('optionAdder').value = '';
+        }
+    };
+
     return React.createElement(
         'div',
         null,
         React.createElement(
             'form',
-            null,
+            { onSubmit: onFormSubmit },
             React.createElement('input', { type: 'text',
                 name: 'option',
+                id: 'optionAdder',
                 className: 'form-control',
                 placeholder: 'Add an option here...' }),
             React.createElement('input', { type: 'submit',
