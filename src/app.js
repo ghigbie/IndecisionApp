@@ -50,27 +50,27 @@ class CounterApp extends React.Component{
         }
     }
 
-    increment = () => {
-        this.setState = (prevState) => {
-            prevState.count = count + 1;
-        }
-    }
+    // increment = () => {
+    //     this.setState = (prevState) => {
+    //         prevState.count = count + 1;
+    //     }
+    // }
 
-    decrement = () => {
-        this.setState = (prevState) => {
-            if(count > 0){
-                preveState.count = count -1
-            }
-        }
-    }
+    // decrement = () => {
+    //     this.setState = (prevState) => {
+    //         if(count > 0){
+    //             preveState.count = count -1
+    //         }
+    //     }
+    // }
 
     render(){
         return(
             <div className="container">
-                <h1>Count: {this.count}</h1>
+                <h1>Count: {this.state.count}</h1>
                 <div>
-                    <button onClick={this.increment}>Increase</button>
-                    <button onClick={this.decrement}>Decrease</button>
+                    <button className="btn btn-default">Increase</button>
+                    <button className="btn btn-defualt">Decrease</button>
                 </div>
             </div>
         );
