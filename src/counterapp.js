@@ -1,28 +1,29 @@
 class CounterApp extends React.Component {
     constructor(props) {
         super(props)
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
         this.reset = this.reset.bind(this);
         this.state = {
             count: 0
         }
     }
 
-    // increment = () => {
-    //     this.setState = (prevState) => {
-    //         prevState.count = count + 1;
-    //     }
-    // }
+    increment(){
+        this.setState = (prevState) => {
+            prevState.count = count + 1;
+        }
+    }
 
-    // decrement = () => {
-    //     this.setState = (prevState) => {
-    //         if(count > 0){
-    //             preveState.count = count -1
-    //         }
-    //     }
-    // }
+    decrement(){
+        this.setState = (prevState) => {
+            if(count > 0){
+                preveState.count = count -1
+            }
+        }
+    }
 
-
-    reset = () => {
+    reset(){
         console.log('Reset');
     }
 
@@ -40,7 +41,7 @@ class CounterApp extends React.Component {
                     >Decrease</button>
 
                     <button className="btn btn-outline-danger"
-                        onClick={.this.reset}
+                        onClick={this.reset}
                     >Reset</button>
                 </div>
             </div>
