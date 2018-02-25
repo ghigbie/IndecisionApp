@@ -4,5 +4,10 @@
   "description": "An app that helps you make decisions",
   "main": "app.js",
   "author": "ghigbie <gehigbie@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
+  }
 }
