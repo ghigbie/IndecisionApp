@@ -50,13 +50,13 @@ class CounterApp extends React.Component{
         }
     }
 
-    Increment = () => {
+    increment = () => {
         this.setState = (prevState) => {
             prevState.count = count + 1;
         }
     }
 
-    Decrement = () => {
+    decrement = () => {
         this.setState = (prevState) => {
             if(count > 0){
                 preveState.count = count -1
@@ -69,8 +69,8 @@ class CounterApp extends React.Component{
             <div className="container">
                 <h1>Count: {this.count}</h1>
                 <div>
-                    <button onClick={this.count++}>Increase</button>
-                    <button>Decrease</button>
+                    <button onClick={this.increment}>Increase</button>
+                    <button onClick={this.decrement}>Decrease</button>
                 </div>
             </div>
         );
