@@ -1,4 +1,14 @@
+class IndecisionApp extends React.Component{
 
+    render(){
+        return(
+            <div>
+                <Header />
+                <Options />
+            </div>
+        );
+    }
+}
 
 const Header = () => {
     const title = 'Indecison App';
@@ -13,12 +23,22 @@ const Header = () => {
         <div style={style}>
             <div className="container">
                 <h1>{title}</h1>
-                <h3>{subTitle}</h3>
+                <h3>{subTitle && subTitle}</h3>
             </div>
         </div>
     )
 }
 
+const Options = () => {
+    const options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
+
+    return(
+        <div>
+            {options && options.map((option) => <p>{option}</p>)}
+        </div>
+    );
+}
+
 
 const appRoot = document.getElementById('react-container');
-ReactDOM.render(<Header/>, appRoot);
+ReactDOM.render(<IndecisionApp />, appRoot);
