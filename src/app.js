@@ -14,7 +14,7 @@ class IndecisionApp extends React.Component{
                         subtitle={this.subtitle}/>
                 <Action options={this.options}/>
                 <Options options={this.options}/>
-                <AddOption  />
+                <AddOption  options={this.options}/>
             </div>
         );
     }
@@ -51,15 +51,13 @@ class Action extends React.Component{
         return (
             <div className="Container">
                 <button className="btn-small btn-outline-calm"
-                    disabled={options.length === 0}
+                    disabled={this.props.options.length === 0}
                     onClick={this.onMakeDecision}
                 >What Should I Do?</button>
             </div>
         )
     }
 }
-
-let options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
 const Options = (props) => {
     const onRemoveAllOptions = () => {
@@ -70,7 +68,7 @@ const Options = (props) => {
     return(
         <div className="Container">
             <button className="btn-small btn-outline-danger"
-                    disabled={options.length === 0}
+                    disabled={props.options.length === 0}
                     onClick={onRemoveAllOptions}
                     >Remove All</button>
             <h4>
@@ -87,13 +85,13 @@ const Option = (props) => {
     return (<li>{props.optionText}</li>);
 };
 
-const AddOption = () => {
+const AddOption = (props) => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         const option = e.target.elements.option.value;
         if(option){
-            options.push(option);
-            console.log(options.length);
+            props.options.push(option);
+            console.log(props.options.length);
             document.getElementById('optionAdder').value = '';
         }
     }

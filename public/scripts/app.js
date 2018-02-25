@@ -32,7 +32,7 @@ var IndecisionApp = function (_React$Component) {
                     subtitle: this.subtitle }),
                 React.createElement(Action, { options: this.options }),
                 React.createElement(Options, { options: this.options }),
-                React.createElement(AddOption, null)
+                React.createElement(AddOption, { options: this.options })
             );
         }
     }]);
@@ -94,7 +94,7 @@ var Action = function (_React$Component2) {
                 React.createElement(
                     'button',
                     { className: 'btn-small btn-outline-calm',
-                        disabled: options.length === 0,
+                        disabled: this.props.options.length === 0,
                         onClick: this.onMakeDecision
                     },
                     'What Should I Do?'
@@ -105,8 +105,6 @@ var Action = function (_React$Component2) {
 
     return Action;
 }(React.Component);
-
-var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
 var Options = function Options(props) {
     var onRemoveAllOptions = function onRemoveAllOptions() {
@@ -120,7 +118,7 @@ var Options = function Options(props) {
         React.createElement(
             'button',
             { className: 'btn-small btn-outline-danger',
-                disabled: options.length === 0,
+                disabled: props.options.length === 0,
                 onClick: onRemoveAllOptions
             },
             'Remove All'
@@ -148,13 +146,13 @@ var Option = function Option(props) {
     );
 };
 
-var AddOption = function AddOption() {
+var AddOption = function AddOption(props) {
     var onFormSubmit = function onFormSubmit(e) {
         e.preventDefault();
         var option = e.target.elements.option.value;
         if (option) {
-            options.push(option);
-            console.log(options.length);
+            props.options.push(option);
+            console.log(props.options.length);
             document.getElementById('optionAdder').value = '';
         }
     };
