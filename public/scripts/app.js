@@ -37,8 +37,8 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'handleChooseOption',
         value: function handleChooseOption() {
-            var random = Math.floor(Math.random() * this.props.options.length);
-            alert(this.props.options[random]);
+            var random = Math.floor(Math.random() * this.state.options.length);
+            alert(this.state.options[random]);
         }
     }, {
         key: 'render',

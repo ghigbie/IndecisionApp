@@ -17,8 +17,8 @@ class IndecisionApp extends React.Component{
     }
 
     handleChooseOption(){
-        let random = Math.floor(Math.random() * this.props.options.length);
-        alert(this.props.options[random]);
+        let random = Math.floor(Math.random() * this.state.options.length);
+        alert(this.state.options[random]);
     }
 
     render(){
