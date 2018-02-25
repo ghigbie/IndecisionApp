@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -26,15 +26,17 @@ var CounterApp = function (_React$Component) {
     }
 
     _createClass(CounterApp, [{
-        key: "increment",
+        key: 'increment',
         value: function increment() {
+            console.log('increment');
             this.setState = function (prevState) {
                 prevState.count = count + 1;
             };
         }
     }, {
-        key: "decrement",
+        key: 'decrement',
         value: function decrement() {
+            console.log('decrement');
             this.setState = function (prevState) {
                 if (count > 0) {
                     preveState.count = count - 1;
@@ -42,44 +44,44 @@ var CounterApp = function (_React$Component) {
             };
         }
     }, {
-        key: "reset",
+        key: 'reset',
         value: function reset() {
             console.log('Reset');
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return React.createElement(
-                "div",
-                { className: "container" },
+                'div',
+                { className: 'container' },
                 React.createElement(
-                    "h1",
+                    'h1',
                     null,
-                    "Count: ",
+                    'Count: ',
                     this.state.count
                 ),
                 React.createElement(
-                    "div",
+                    'div',
                     null,
                     React.createElement(
-                        "button",
-                        { className: "btn btn-outline-secondary",
-                            onClick: this.reset },
-                        "Increase"
+                        'button',
+                        { className: 'btn btn-outline-secondary',
+                            onClick: this.increment },
+                        'Increase'
                     ),
                     React.createElement(
-                        "button",
-                        { className: "btn btn-outline-secondary",
-                            onClick: this.reset
+                        'button',
+                        { className: 'btn btn-outline-secondary',
+                            onClick: this.decrement
                         },
-                        "Decrease"
+                        'Decrease'
                     ),
                     React.createElement(
-                        "button",
-                        { className: "btn btn-outline-danger",
+                        'button',
+                        { className: 'btn btn-outline-danger',
                             onClick: this.reset
                         },
-                        "Reset"
+                        'Reset'
                     )
                 )
             );
@@ -90,4 +92,4 @@ var CounterApp = function (_React$Component) {
 }(React.Component);
 
 var appRoot = document.getElementById('react-container');
-ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);
+ReactDOM.render(React.createElement(CounterApp, null), appRoot);
