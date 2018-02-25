@@ -29,19 +29,17 @@ var CounterApp = function (_React$Component) {
         key: 'increment',
         value: function increment() {
             console.log('increment');
-            this.setState = function (prevState) {
-                prevState.count = count + 1;
-            };
+            this.setState(function (prevState) {
+                return { count: prevState.count + 1 };
+            });
         }
     }, {
         key: 'decrement',
         value: function decrement() {
             console.log('decrement');
-            this.setState = function (prevState) {
-                if (count > 0) {
-                    preveState.count = count - 1;
-                }
-            };
+            this.setState(function (prevState) {
+                return { count: prevState.count - 1 };
+            });
         }
     }, {
         key: 'reset',
