@@ -18,7 +18,9 @@ var IndecisionApp = function (_React$Component) {
 
         _this.title = 'Indecison App';
         _this.subtitle = 'Put your life in the hands of a computer...';
-        _this.options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+        _this.state = {
+            options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
+        };
         return _this;
     }
 
@@ -30,10 +32,10 @@ var IndecisionApp = function (_React$Component) {
                 null,
                 React.createElement(Header, { title: this.title,
                     subtitle: this.subtitle }),
-                React.createElement(Action, { options: this.options }),
-                React.createElement(Options, { options: this.options }),
-                React.createElement(OptionsTwo, { options: this.options }),
-                React.createElement(AddOption, { options: this.options })
+                React.createElement(Action, { options: this.state.options }),
+                React.createElement(Options, { options: this.state.options }),
+                React.createElement(OptionsTwo, { options: this.state.options }),
+                React.createElement(AddOption, { options: this.state.options })
             );
         }
     }]);

@@ -4,7 +4,9 @@ class IndecisionApp extends React.Component{
 
         this.title = 'Indecison App';
         this.subtitle = 'Put your life in the hands of a computer...';
-        this.options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+        this.state = {
+            options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
+        }
     }
 
     render(){
@@ -12,10 +14,10 @@ class IndecisionApp extends React.Component{
             <div>
                 <Header title={this.title}
                         subtitle={this.subtitle}/>
-                <Action options={this.options}/>
-                <Options options={this.options}/>
-                <OptionsTwo options={this.options}/>
-                <AddOption options={this.options}/>
+                <Action options={this.state.options}/>
+                <Options options={this.state.options}/>
+                <OptionsTwo options={this.state.options}/>
+                <AddOption options={this.state.options}/>
             </div>
         );
     }
