@@ -24,7 +24,8 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, null),
-                React.createElement(Options, null)
+                React.createElement(Options, null),
+                React.createElement(Form, null)
             );
         }
     }]);
@@ -82,71 +83,22 @@ var Options = function Options() {
     );
 };
 
-var CounterApp = function (_React$Component2) {
-    _inherits(CounterApp, _React$Component2);
-
-    function CounterApp(props) {
-        _classCallCheck(this, CounterApp);
-
-        var _this2 = _possibleConstructorReturn(this, (CounterApp.__proto__ || Object.getPrototypeOf(CounterApp)).call(this, props));
-
-        _this2.state = {
-            count: 0
-        };
-        return _this2;
-    }
-
-    // increment = () => {
-    //     this.setState = (prevState) => {
-    //         prevState.count = count + 1;
-    //     }
-    // }
-
-    // decrement = () => {
-    //     this.setState = (prevState) => {
-    //         if(count > 0){
-    //             preveState.count = count -1
-    //         }
-    //     }
-    // }
-
-    _createClass(CounterApp, [{
-        key: 'render',
-        value: function render() {
-            return React.createElement(
-                'div',
-                { className: 'container' },
-                React.createElement(
-                    'h1',
-                    null,
-                    'Count: ',
-                    this.state.count
-                ),
-                React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary' },
-                        'Increase'
-                    ),
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary' },
-                        'Decrease'
-                    ),
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-outline-danger' },
-                        'Reset'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return CounterApp;
-}(React.Component);
+var Form = function Form() {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'form',
+            null,
+            React.createElement('input', { type: 'text',
+                name: 'option',
+                className: 'form-control',
+                placeholder: 'Add an option here...' }),
+            React.createElement('input', { type: 'submit',
+                className: 'btn-sm btn-outline-success' })
+        )
+    );
+};
 
 var appRoot = document.getElementById('react-container');
-ReactDOM.render(React.createElement(CounterApp, null), appRoot);
+ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);

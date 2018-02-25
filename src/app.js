@@ -5,6 +5,7 @@ class IndecisionApp extends React.Component{
             <div>
                 <Header />
                 <Options />
+                <Form />
             </div>
         );
     }
@@ -42,42 +43,23 @@ const Options = () => {
     );
 }
 
-class CounterApp extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            count: 0
-        }
-    }
-
-    // increment = () => {
-    //     this.setState = (prevState) => {
-    //         prevState.count = count + 1;
-    //     }
-    // }
-
-    // decrement = () => {
-    //     this.setState = (prevState) => {
-    //         if(count > 0){
-    //             preveState.count = count -1
-    //         }
-    //     }
-    // }
-
-    render(){
-        return(
-            <div className="container">
-                <h1>Count: {this.state.count}</h1>
-                <div>
-                    <button className="btn btn-outline-secondary">Increase</button>
-                    <button className="btn btn-outline-secondary">Decrease</button>
-                    <button className="btn btn-outline-danger">Reset</button>
-                </div>
-            </div>
-        );
-    }
+const Form = () => {
+    return(
+        <div>
+            <form>
+                <input type="text" 
+                       name="option" 
+                       className="form-control"
+                       placeholder="Add an option here..."/>
+                <input type="submit" 
+                       className="btn-sm btn-outline-success"/>
+            </form>
+        </div>
+    )
 }
 
 
+
+
 const appRoot = document.getElementById('react-container');
-ReactDOM.render(<CounterApp />, appRoot);
+ReactDOM.render(<IndecisionApp />, appRoot);
