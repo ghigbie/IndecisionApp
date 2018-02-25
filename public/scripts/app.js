@@ -32,6 +32,7 @@ var IndecisionApp = function (_React$Component) {
                     subtitle: this.subtitle }),
                 React.createElement(Action, { options: this.options }),
                 React.createElement(Options, { options: this.options }),
+                React.createElement(OptionsTwo, { options: this.options }),
                 React.createElement(AddOption, { options: this.options })
             );
         }
@@ -107,7 +108,8 @@ var Action = function (_React$Component2) {
 }(React.Component);
 
 var Options = function Options(props) {
-    var onRemoveAllOptions = function onRemoveAllOptions() {
+
+    var handleRemoveAllOptions = function handleRemoveAllOptions() {
         console.log('remove');
         props.options = [];
     };
@@ -119,7 +121,7 @@ var Options = function Options(props) {
             'button',
             { className: 'btn-small btn-outline-danger',
                 disabled: props.options.length === 0,
-                onClick: onRemoveAllOptions
+                onClick: handleRemoveAllOptions
             },
             'Remove All'
         ),
@@ -137,6 +139,53 @@ var Options = function Options(props) {
         )
     );
 };
+
+var OptionsTwo = function (_React$Component3) {
+    _inherits(OptionsTwo, _React$Component3);
+
+    function OptionsTwo() {
+        _classCallCheck(this, OptionsTwo);
+
+        return _possibleConstructorReturn(this, (OptionsTwo.__proto__ || Object.getPrototypeOf(OptionsTwo)).apply(this, arguments));
+    }
+
+    _createClass(OptionsTwo, [{
+        key: 'handleRemoveAllOptions',
+        value: function handleRemoveAllOptions() {
+            alert("Options removing yo!");
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'Container' },
+                React.createElement(
+                    'button',
+                    { className: 'btn-small btn-outline-danger',
+                        disabled: this.props.options.length === 0,
+                        onClick: this.handleRemoveAllOptions
+                    },
+                    'Remove All'
+                ),
+                React.createElement(
+                    'h4',
+                    null,
+                    this.props.options.length > 0 ? 'Here are your ' + this.props.options.length + ' options:' : 'No options for you!'
+                ),
+                React.createElement(
+                    'ol',
+                    null,
+                    this.props.options && this.props.options.map(function (option) {
+                        return React.createElement(Option, { key: option, optionText: option });
+                    })
+                )
+            );
+        }
+    }]);
+
+    return OptionsTwo;
+}(React.Component);
 
 var Option = function Option(props) {
     return React.createElement(

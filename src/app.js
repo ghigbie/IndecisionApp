@@ -14,7 +14,8 @@ class IndecisionApp extends React.Component{
                         subtitle={this.subtitle}/>
                 <Action options={this.options}/>
                 <Options options={this.options}/>
-                <AddOption  options={this.options}/>
+                <OptionsTwo options={this.options}/>
+                <AddOption options={this.options}/>
             </div>
         );
     }
@@ -60,25 +61,49 @@ class Action extends React.Component{
 }
 
 const Options = (props) => {
-    const onRemoveAllOptions = () => {
+
+    const handleRemoveAllOptions = () => {
         console.log('remove');
         props.options = [];
     };
 
-    return(
-        <div className="Container">
-            <button className="btn-small btn-outline-danger"
-                    disabled={props.options.length === 0}
-                    onClick={onRemoveAllOptions}
-                    >Remove All</button>
-            <h4>
-                {props.options.length > 0 ? `Here are your ${props.options.length} options:` : 'No options for you!'}
-            </h4>
-            <ol>
-            {props.options && props.options.map((option) => <Option key={option} optionText={option} />)}
-            </ol>
-        </div>
-    );
+        return(
+            <div className="Container">
+                <button className="btn-small btn-outline-danger"
+                        disabled={props.options.length === 0}
+                        onClick={handleRemoveAllOptions}
+                        >Remove All</button>
+                <h4>
+                    {props.options.length > 0 ? `Here are your ${props.options.length} options:` : 'No options for you!'}
+                </h4>
+                <ol>
+                {props.options && props.options.map((option) => <Option key={option} optionText={option} />)}
+                </ol>
+            </div>
+        );
+};
+
+class OptionsTwo extends React.Component{
+    handleRemoveAllOptions(){
+        alert("Options removing yo!");
+    }
+
+    render(){
+        return (
+            <div className="Container">
+                <button className="btn-small btn-outline-danger"
+                    disabled={this.props.options.length === 0}
+                    onClick={this.handleRemoveAllOptions}
+                >Remove All</button>
+                <h4>
+                    {this.props.options.length > 0 ? `Here are your ${this.props.options.length} options:` : 'No options for you!'}
+                </h4>
+                <ol>
+                    {this.props.options && this.props.options.map((option) => <Option key={option} optionText={option} />)}
+                </ol>
+            </div>
+        );
+    }
 }
 
 const Option = (props) => {
