@@ -143,10 +143,13 @@ var Options = function Options(props) {
 var OptionsTwo = function (_React$Component3) {
     _inherits(OptionsTwo, _React$Component3);
 
-    function OptionsTwo() {
+    function OptionsTwo(props) {
         _classCallCheck(this, OptionsTwo);
 
-        return _possibleConstructorReturn(this, (OptionsTwo.__proto__ || Object.getPrototypeOf(OptionsTwo)).apply(this, arguments));
+        var _this3 = _possibleConstructorReturn(this, (OptionsTwo.__proto__ || Object.getPrototypeOf(OptionsTwo)).call(this, props));
+
+        _this3.handleRemoveAllOptions = _this3.handleRemoveAllOptions.bind(_this3);
+        return _this3;
     }
 
     _createClass(OptionsTwo, [{
@@ -195,33 +198,53 @@ var Option = function Option(props) {
     );
 };
 
-var AddOption = function AddOption(props) {
-    var onFormSubmit = function onFormSubmit(e) {
-        e.preventDefault();
-        var option = e.target.elements.option.value;
-        if (option) {
-            props.options.push(option);
-            console.log(props.options.length);
-            document.getElementById('optionAdder').value = '';
-        }
-    };
+var AddOption = function (_React$Component4) {
+    _inherits(AddOption, _React$Component4);
 
-    return React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text',
-                name: 'option',
-                id: 'optionAdder',
-                className: 'form-control',
-                placeholder: 'Add an option here...' }),
-            React.createElement('input', { type: 'submit',
-                className: 'btn-sm btn-outline-success' })
-        )
-    );
-};
+    function AddOption(props) {
+        _classCallCheck(this, AddOption);
+
+        var _this4 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this4.handleAddOption = _this4.handleAddOption.bind(_this4);
+        return _this4;
+    }
+
+    _createClass(AddOption, [{
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            e.preventDefault();
+            var option = e.target.elements.option.value.trim();
+            if (option) {
+                //this.props.options.push(option);
+                //console.log(this.props.options.length);
+                console.log(option);
+                document.getElementById('optionAdder').value = '';
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'form',
+                    { onSubmit: this.handleAddOption },
+                    React.createElement('input', { type: 'text',
+                        name: 'option',
+                        id: 'optionAdder',
+                        className: 'form-control',
+                        placeholder: 'Add an option here...' }),
+                    React.createElement('input', { type: 'submit',
+                        className: 'btn-sm btn-outline-success' })
+                )
+            );
+        }
+    }]);
+
+    return AddOption;
+}(React.Component);
 
 var appRoot = document.getElementById('react-container');
 ReactDOM.render(React.createElement(IndecisionApp, null), appRoot);

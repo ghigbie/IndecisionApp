@@ -84,6 +84,11 @@ const Options = (props) => {
 };
 
 class OptionsTwo extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleRemoveAllOptions = this.handleRemoveAllOptions.bind(this);
+    }
+
     handleRemoveAllOptions(){
         alert("Options removing yo!");
     }
@@ -110,30 +115,38 @@ const Option = (props) => {
     return (<li>{props.optionText}</li>);
 };
 
-const AddOption = (props) => {
-    const onFormSubmit = (e) => {
+class AddOption extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleAddOption = this.handleAddOption.bind(this);
+    }
+
+    handleAddOption(e){
         e.preventDefault();
-        const option = e.target.elements.option.value;
+        const option = e.target.elements.option.value.trim();
         if(option){
-            props.options.push(option);
-            console.log(props.options.length);
+            //this.props.options.push(option);
+            //console.log(this.props.options.length);
+            console.log(option);
             document.getElementById('optionAdder').value = '';
         }
     }
 
-    return(
-        <div>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" 
-                       name="option" 
-                       id="optionAdder"
-                       className="form-control"
-                       placeholder="Add an option here..."/>
-                <input type="submit" 
-                       className="btn-sm btn-outline-success"/>
-            </form>
-        </div>
-    )
+    render(){
+        return(
+            <div>
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" 
+                        name="option" 
+                        id="optionAdder"
+                        className="form-control"
+                        placeholder="Add an option here..."/>
+                    <input type="submit" 
+                        className="btn-sm btn-outline-success"/>
+                </form>
+            </div>
+        );
+    }
 }
 
 
