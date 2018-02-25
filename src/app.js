@@ -4,9 +4,15 @@ class IndecisionApp extends React.Component{
 
         this.title = 'Indecison App';
         this.subtitle = 'Put your life in the hands of a computer...';
+
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.state = {
             options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
         }
+    }
+
+    handleDeleteOptions(){
+        this.setState(() => ({options: []}))
     }
 
     render(){
@@ -15,6 +21,7 @@ class IndecisionApp extends React.Component{
                 <Header title={this.title}
                         subtitle={this.subtitle}/>
                 <Action hasOptions={this.state.options.length < 0}
+                        deleteOptions={this.props.handleDeleteOptions}
                         options={this.state.options}/>
                 <Options options={this.state.options}/>
                 <OptionsTwo options={this.state.options}/>
@@ -92,17 +99,17 @@ class OptionsTwo extends React.Component{
         this.handleRemoveAllOptions = this.handleRemoveAllOptions.bind(this);
     }
 
-    handleRemoveAllOptions(){
-        alert("Options removing yo!");
+    handleRemoveAllOptionsTwo(){
+        this.props.deleteOptions;
     }
 
     render(){
         return (
             <div className="Container">
                 <button className="btn-small btn-outline-danger"
-                    disabled={this.props.options.length === 0}
-                    onClick={this.handleRemoveAllOptions}
-                >Remove All</button>
+                        disabled={this.props.options.length === 0}
+                        onClick={this.props.deleteOptions}
+                        >Remove All</button>
                 <h4>
                     {this.props.options.length > 0 ? `Here are your ${this.props.options.length} options:` : 'No options for you!'}
                 </h4>

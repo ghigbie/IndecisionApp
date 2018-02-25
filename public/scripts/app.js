@@ -18,6 +18,8 @@ var IndecisionApp = function (_React$Component) {
 
         _this.title = 'Indecison App';
         _this.subtitle = 'Put your life in the hands of a computer...';
+
+        _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
         _this.state = {
             options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
         };
@@ -25,6 +27,13 @@ var IndecisionApp = function (_React$Component) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'handleDeleteOptions',
+        value: function handleDeleteOptions() {
+            this.setState(function () {
+                return { options: [] };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -33,6 +42,7 @@ var IndecisionApp = function (_React$Component) {
                 React.createElement(Header, { title: this.title,
                     subtitle: this.subtitle }),
                 React.createElement(Action, { hasOptions: this.state.options.length < 0,
+                    deleteOptions: this.props.handleDeleteOptions,
                     options: this.state.options }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(OptionsTwo, { options: this.state.options }),
@@ -156,9 +166,9 @@ var OptionsTwo = function (_React$Component3) {
     }
 
     _createClass(OptionsTwo, [{
-        key: 'handleRemoveAllOptions',
-        value: function handleRemoveAllOptions() {
-            alert("Options removing yo!");
+        key: 'handleRemoveAllOptionsTwo',
+        value: function handleRemoveAllOptionsTwo() {
+            this.props.deleteOptions;
         }
     }, {
         key: 'render',
@@ -170,7 +180,7 @@ var OptionsTwo = function (_React$Component3) {
                     'button',
                     { className: 'btn-small btn-outline-danger',
                         disabled: this.props.options.length === 0,
-                        onClick: this.handleRemoveAllOptions
+                        onClick: this.props.deleteOptions
                     },
                     'Remove All'
                 ),
