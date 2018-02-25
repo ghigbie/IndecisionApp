@@ -69,8 +69,9 @@ class CounterApp extends React.Component{
             <div className="container">
                 <h1>Count: {this.state.count}</h1>
                 <div>
-                    <button className="btn btn-default">Increase</button>
-                    <button className="btn btn-defualt">Decrease</button>
+                    <button className="btn btn-outline-secondary">Increase</button>
+                    <button className="btn btn-outline-secondary">Decrease</button>
+                    <button className="btn btn-outline-danger">Reset</button>
                 </div>
             </div>
         );

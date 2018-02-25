@@ -127,13 +127,18 @@ var CounterApp = function (_React$Component2) {
                     null,
                     React.createElement(
                         'button',
-                        { className: 'btn btn-default' },
+                        { className: 'btn btn-outline-secondary' },
                         'Increase'
                     ),
                     React.createElement(
                         'button',
-                        { className: 'btn btn-defualt' },
+                        { className: 'btn btn-outline-secondary' },
                         'Decrease'
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'btn btn-outline-danger' },
+                        'Reset'
                     )
                 )
             );
