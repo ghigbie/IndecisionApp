@@ -1,0 +1,8 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "description": "An app that helps you make decisions",
+  "main": "app.js",
+  "author": "ghigbie <gehigbie@gmail.com>",
+  "license": "MIT"
+}
