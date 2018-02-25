@@ -6,6 +6,7 @@ class IndecisionApp extends React.Component{
         this.subtitle = 'Put your life in the hands of a computer...';
 
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handleChooseOption = this.handleChooseOption.bind(this);
         this.state = {
             options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
         }
@@ -15,16 +16,22 @@ class IndecisionApp extends React.Component{
         this.setState(() => ({options: []}))
     }
 
+    handleChooseOption(){
+        let random = Math.floor(Math.random() * this.props.options.length);
+        alert(this.props.options[random]);
+    }
+
     render(){
         return(
             <div>
                 <Header title={this.title}
                         subtitle={this.subtitle}/>
                 <Action hasOptions={this.state.options.length < 0}
-                        deleteOptions={this.props.handleDeleteOptions}
+                        handleChooseOption={this.handleChooseOption}
                         options={this.state.options}/>
                 <Options options={this.state.options}/>
-                <OptionsTwo options={this.state.options}/>
+                <OptionsTwo options={this.state.options}
+                            handleDeleteOptions={this.handleDeleteOptions}/>
                 <AddOption options={this.state.options}/>
             </div>
         );
@@ -49,21 +56,12 @@ const Header = (props) => {
 }
 
 class Action extends React.Component{
-    constructor(props){
-        super(props);
-        this.onMakeDecision = this.onMakeDecision.bind(this);
-    }
-    onMakeDecision(){
-        let random = Math.floor(Math.random() * this.props.options.length);
-        alert(this.props.options[random]);
-    }
-
     render(){
         return (
             <div className="Container">
                 <button className="btn-small btn-outline-calm"
                         disabled={this.props.hasOptions}
-                        onClick={this.onMakeDecision}
+                        onClick={this.props.handleChooseOption}
                 >What Should I Do?</button>
             </div>
         )
@@ -94,21 +92,12 @@ const Options = (props) => {
 };
 
 class OptionsTwo extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleRemoveAllOptions = this.handleRemoveAllOptions.bind(this);
-    }
-
-    handleRemoveAllOptionsTwo(){
-        this.props.deleteOptions;
-    }
-
     render(){
         return (
             <div className="Container">
                 <button className="btn-small btn-outline-danger"
                         disabled={this.props.options.length === 0}
-                        onClick={this.props.deleteOptions}
+                        onClick={this.props.handleDeleteOptions}
                         >Remove All</button>
                 <h4>
                     {this.props.options.length > 0 ? `Here are your ${this.props.options.length} options:` : 'No options for you!'}

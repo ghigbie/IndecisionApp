@@ -20,6 +20,7 @@ var IndecisionApp = function (_React$Component) {
         _this.subtitle = 'Put your life in the hands of a computer...';
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+        _this.handleChooseOption = _this.handleChooseOption.bind(_this);
         _this.state = {
             options: ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
         };
@@ -34,6 +35,12 @@ var IndecisionApp = function (_React$Component) {
             });
         }
     }, {
+        key: 'handleChooseOption',
+        value: function handleChooseOption() {
+            var random = Math.floor(Math.random() * this.props.options.length);
+            alert(this.props.options[random]);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -42,10 +49,11 @@ var IndecisionApp = function (_React$Component) {
                 React.createElement(Header, { title: this.title,
                     subtitle: this.subtitle }),
                 React.createElement(Action, { hasOptions: this.state.options.length < 0,
-                    deleteOptions: this.props.handleDeleteOptions,
+                    handleChooseOption: this.handleChooseOption,
                     options: this.state.options }),
                 React.createElement(Options, { options: this.state.options }),
-                React.createElement(OptionsTwo, { options: this.state.options }),
+                React.createElement(OptionsTwo, { options: this.state.options,
+                    handleDeleteOptions: this.handleDeleteOptions }),
                 React.createElement(AddOption, { options: this.state.options })
             );
         }
@@ -84,22 +92,13 @@ var Header = function Header(props) {
 var Action = function (_React$Component2) {
     _inherits(Action, _React$Component2);
 
-    function Action(props) {
+    function Action() {
         _classCallCheck(this, Action);
 
-        var _this2 = _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).call(this, props));
-
-        _this2.onMakeDecision = _this2.onMakeDecision.bind(_this2);
-        return _this2;
+        return _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).apply(this, arguments));
     }
 
     _createClass(Action, [{
-        key: 'onMakeDecision',
-        value: function onMakeDecision() {
-            var random = Math.floor(Math.random() * this.props.options.length);
-            alert(this.props.options[random]);
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -109,7 +108,7 @@ var Action = function (_React$Component2) {
                     'button',
                     { className: 'btn-small btn-outline-calm',
                         disabled: this.props.hasOptions,
-                        onClick: this.onMakeDecision
+                        onClick: this.props.handleChooseOption
                     },
                     'What Should I Do?'
                 )
@@ -156,21 +155,13 @@ var Options = function Options(props) {
 var OptionsTwo = function (_React$Component3) {
     _inherits(OptionsTwo, _React$Component3);
 
-    function OptionsTwo(props) {
+    function OptionsTwo() {
         _classCallCheck(this, OptionsTwo);
 
-        var _this3 = _possibleConstructorReturn(this, (OptionsTwo.__proto__ || Object.getPrototypeOf(OptionsTwo)).call(this, props));
-
-        _this3.handleRemoveAllOptions = _this3.handleRemoveAllOptions.bind(_this3);
-        return _this3;
+        return _possibleConstructorReturn(this, (OptionsTwo.__proto__ || Object.getPrototypeOf(OptionsTwo)).apply(this, arguments));
     }
 
     _createClass(OptionsTwo, [{
-        key: 'handleRemoveAllOptionsTwo',
-        value: function handleRemoveAllOptionsTwo() {
-            this.props.deleteOptions;
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -180,7 +171,7 @@ var OptionsTwo = function (_React$Component3) {
                     'button',
                     { className: 'btn-small btn-outline-danger',
                         disabled: this.props.options.length === 0,
-                        onClick: this.props.deleteOptions
+                        onClick: this.props.handleDeleteOptions
                     },
                     'Remove All'
                 ),
