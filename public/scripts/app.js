@@ -24,6 +24,7 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, null),
+                React.createElement(Action, null),
                 React.createElement(Options, null),
                 React.createElement(Form, null)
             );
@@ -62,6 +63,25 @@ var Header = function Header() {
     );
 };
 
+var Action = function Action() {
+    var onMakeDecision = function onMakeDecision() {
+        var random = Math.floor(Math.random() * options.length);
+        alert(options[random]);
+    };
+    return React.createElement(
+        'div',
+        { className: 'Container' },
+        React.createElement(
+            'button',
+            { className: 'btn-small btn-outline-calm',
+                disabled: options.length === 0,
+                onClick: onMakeDecision
+            },
+            'What Should I Do?'
+        )
+    );
+};
+
 var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
 var Options = function Options() {
@@ -76,6 +96,7 @@ var Options = function Options() {
         React.createElement(
             'button',
             { className: 'btn-small btn-outline-danger',
+                disabled: options.length === 0,
                 onClick: onRemoveAllOptions
             },
             'Remove All'

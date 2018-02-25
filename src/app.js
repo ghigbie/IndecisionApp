@@ -4,6 +4,7 @@ class IndecisionApp extends React.Component{
         return(
             <div>
                 <Header />
+                <Action />
                 <Options />
                 <Form />
             </div>
@@ -30,6 +31,21 @@ const Header = () => {
     )
 }
 
+const Action = () => {
+    const onMakeDecision = () => {
+        let random = Math.floor(Math.random() * options.length);
+        alert(options[random]);
+    }
+    return (
+        <div className="Container">
+            <button className="btn-small btn-outline-calm"
+                disabled={options.length === 0}
+                onClick={onMakeDecision}
+            >What Should I Do?</button>
+        </div>
+    )
+}
+
 let options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
 
 const Options = () => {
@@ -41,6 +57,7 @@ const Options = () => {
     return(
         <div className="Container">
             <button className="btn-small btn-outline-danger"
+                    disabled={options.length === 0}
                     onClick={onRemoveAllOptions}
                     >Remove All</button>
             <h4>
