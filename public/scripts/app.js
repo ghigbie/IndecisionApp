@@ -32,7 +32,8 @@ var IndecisionApp = function (_React$Component) {
                 null,
                 React.createElement(Header, { title: this.title,
                     subtitle: this.subtitle }),
-                React.createElement(Action, { options: this.state.options }),
+                React.createElement(Action, { hasOptions: this.state.options.length < 0,
+                    options: this.state.options }),
                 React.createElement(Options, { options: this.state.options }),
                 React.createElement(OptionsTwo, { options: this.state.options }),
                 React.createElement(AddOption, { options: this.state.options })
@@ -97,7 +98,7 @@ var Action = function (_React$Component2) {
                 React.createElement(
                     'button',
                     { className: 'btn-small btn-outline-calm',
-                        disabled: this.props.options.length === 0,
+                        disabled: this.props.hasOptions,
                         onClick: this.onMakeDecision
                     },
                     'What Should I Do?'

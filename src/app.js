@@ -14,7 +14,8 @@ class IndecisionApp extends React.Component{
             <div>
                 <Header title={this.title}
                         subtitle={this.subtitle}/>
-                <Action options={this.state.options}/>
+                <Action hasOptions={this.state.options.length < 0}
+                        options={this.state.options}/>
                 <Options options={this.state.options}/>
                 <OptionsTwo options={this.state.options}/>
                 <AddOption options={this.state.options}/>
@@ -54,8 +55,8 @@ class Action extends React.Component{
         return (
             <div className="Container">
                 <button className="btn-small btn-outline-calm"
-                    disabled={this.props.options.length === 0}
-                    onClick={this.onMakeDecision}
+                        disabled={this.props.hasOptions}
+                        onClick={this.onMakeDecision}
                 >What Should I Do?</button>
             </div>
         )
