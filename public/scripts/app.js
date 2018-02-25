@@ -63,11 +63,23 @@ var Header = function Header() {
 };
 
 var options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+
 var Options = function Options() {
+    var onRemoveAllOptions = function onRemoveAllOptions() {
+        console.log('remove');
+        options = [];
+    };
 
     return React.createElement(
         'div',
         { className: 'Container' },
+        React.createElement(
+            'button',
+            { className: 'btn-small btn-outline-danger',
+                onClick: onRemoveAllOptions
+            },
+            'Remove All'
+        ),
         React.createElement(
             'h4',
             null,
@@ -76,7 +88,7 @@ var Options = function Options() {
         options && options.map(function (option) {
             return React.createElement(
                 'p',
-                null,
+                { key: option },
                 option
             );
         })

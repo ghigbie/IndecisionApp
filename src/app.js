@@ -30,15 +30,23 @@ const Header = () => {
     )
 }
 
-const options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+let options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas'];
+
 const Options = () => {
+    const onRemoveAllOptions = () => {
+        console.log('remove');
+        options = [];
+    };
 
     return(
         <div className="Container">
+            <button className="btn-small btn-outline-danger"
+                    onClick={onRemoveAllOptions}
+                    >Remove All</button>
             <h4>
                 {options.length > 0 ? 'Here are your options:' : 'No options for you!'}
             </h4>
-            {options && options.map((option) => <p>{option}</p>)}
+            {options && options.map((option) => <p key={option}>{option}</p>)}
         </div>
     );
 }
