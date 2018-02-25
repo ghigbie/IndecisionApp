@@ -26,7 +26,7 @@ var IndecisionApp = function (_React$Component) {
                 React.createElement(Header, null),
                 React.createElement(Action, null),
                 React.createElement(Options, null),
-                React.createElement(Form, null)
+                React.createElement(AddOption, null)
             );
         }
     }]);
@@ -120,7 +120,7 @@ var Options = function Options() {
     );
 };
 
-var Form = function Form() {
+var AddOption = function AddOption() {
     var onFormSubmit = function onFormSubmit(e) {
         e.preventDefault();
         var option = e.target.elements.option.value;

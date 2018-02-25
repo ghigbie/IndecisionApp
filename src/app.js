@@ -6,7 +6,7 @@ class IndecisionApp extends React.Component{
                 <Header />
                 <Action />
                 <Options />
-                <Form />
+                <AddOption  />
             </div>
         );
     }
@@ -70,7 +70,7 @@ const Options = () => {
     );
 }
 
-const Form = () => {
+const AddOption = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         const option = e.target.elements.option.value;
