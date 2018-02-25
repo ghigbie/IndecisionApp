@@ -66,7 +66,12 @@ var Options = function Options() {
 
     return React.createElement(
         'div',
-        null,
+        { className: 'Container' },
+        React.createElement(
+            'h4',
+            null,
+            options.length > 0 ? 'Here are your options:' : 'No options for you!'
+        ),
         options && options.map(function (option) {
             return React.createElement(
                 'p',

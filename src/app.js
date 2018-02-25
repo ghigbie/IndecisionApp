@@ -33,7 +33,10 @@ const Options = () => {
     const options = ['Walk doggie', 'Pet kitty', 'Hunt Javelinas']
 
     return(
-        <div>
+        <div className="Container">
+            <h4>
+                {options.length > 0 ? 'Here are your options:' : 'No options for you!'}
+            </h4>
             {options && options.map((option) => <p>{option}</p>)}
         </div>
     );
